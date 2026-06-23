@@ -1,0 +1,15 @@
+{
+  "expo": {
+    "name": "Aurora",
+    "slug": "aurora",
+    "scheme": "aurora",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "userInterfaceStyle": "automatic",
+    "newArchEnabled": true,
+    "ios": { "supportsTablet": true, "bundleIdentifier": "io.tobiasbrown.aurora" },
+    "android": { "package": "io.tobiasbrown.aurora" },
+    "plugins": ["expo-router", "expo-secure-store", "expo-local-authentication"],
+    "experiments": { "typedRoutes": true }
+  }
+}
