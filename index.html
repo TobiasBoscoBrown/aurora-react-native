@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Aurora — React Native Portfolio Showcase · Tobias Bosco Brown</title>
+<style>
+  :root{
+    --bg:#0B0E14;--surface:#11151F;--surfaceAlt:#1A2030;--border:#252C42;
+    --text:#fff;--muted:#8A93A6;--brand:#6E8BFF;--mint:#3DDC97;--coral:#FF6B6B;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{background:radial-gradient(1200px 600px at 70% -10%,#1a2240 0,var(--bg) 55%);color:var(--text);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;line-height:1.6;padding:48px 20px 80px}
+  .wrap{max-width:1100px;margin:0 auto}
+  .eyebrow{color:var(--brand);font-weight:700;letter-spacing:.14em;text-transform:uppercase;font-size:.72rem}
+  h1{font-size:2.7rem;line-height:1.1;margin:8px 0 6px;letter-spacing:-.02em}
+  .sub{color:var(--muted);font-size:1.05rem;max-width:680px}
+  .by{margin-top:14px;font-size:.9rem;color:var(--muted)}
+  .by b{color:var(--text)}
+  .stack{display:flex;flex-wrap:wrap;gap:8px;margin:26px 0 40px}
+  .chip{background:var(--surface);border:1px solid var(--border);border-radius:999px;padding:6px 14px;font-size:.82rem;color:var(--text)}
+  .chip.k{color:var(--brand);border-color:#33407a}
+  .phones{display:flex;gap:30px;justify-content:center;flex-wrap:wrap;margin:10px 0 56px}
+  .phone{width:280px;height:580px;background:#05070c;border:10px solid #04050a;border-radius:44px;
+    box-shadow:0 30px 70px rgba(0,0,0,.55),inset 0 0 0 2px #1a2030;position:relative;overflow:hidden;flex:0 0 auto}
+  .notch{position:absolute;top:0;left:50%;transform:translateX(-50%);width:130px;height:26px;background:#04050a;border-radius:0 0 16px 16px;z-index:5}
+  .screen{position:absolute;inset:0;background:var(--bg);padding:46px 16px 16px;overflow:hidden}
+  .label{position:absolute;bottom:14px;left:0;right:0;text-align:center;color:var(--muted);font-size:.78rem}
+  .muted{color:var(--muted)} .mint{color:var(--mint)} .coral{color:var(--coral)} .brand{color:var(--brand)}
+  .bal{font-size:2.4rem;font-weight:700;letter-spacing:-.02em;font-variant-numeric:tabular-nums}
+  .row{display:flex;align-items:center;justify-content:space-between;padding:11px 6px;border-bottom:1px solid var(--border)}
+  .row:last-child{border-bottom:none}
+  .sym{font-weight:600;font-size:.95rem}.name{font-size:.74rem;color:var(--muted)}
+  .price{text-align:right;font-variant-numeric:tabular-nums;font-size:.92rem}
+  .card{background:var(--surface);border:1px solid var(--border);border-radius:18px;padding:10px 8px;margin-top:14px}
+  svg .area{opacity:.18}
+  .tabbar{position:absolute;bottom:0;left:0;right:0;height:54px;background:var(--surface);border-top:1px solid var(--border);
+    display:flex;align-items:center;justify-content:space-around;font-size:.72rem}
+  .pill{border:1px solid var(--brand);color:var(--brand);border-radius:999px;padding:5px 14px;font-size:.78rem;font-weight:600}
+  .pill.on{background:var(--brand);color:var(--bg)}
+  .feat{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:18px;margin-top:18px}
+  .f{background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:20px}
+  .f h3{font-size:1rem;margin-bottom:6px}.f p{color:var(--muted);font-size:.9rem}
+  h2{font-size:1.5rem;margin:54px 0 6px;letter-spacing:-.01em}
+  .codewrap{background:#070a10;border:1px solid var(--border);border-radius:16px;margin-top:18px;overflow:hidden}
+  .codehead{background:#0d121c;border-bottom:1px solid var(--border);padding:9px 16px;color:var(--muted);font-size:.8rem;font-family:Menlo,monospace}
+  pre{padding:18px;overflow-x:auto;font-family:Menlo,Consolas,monospace;font-size:.78rem;line-height:1.65}
+  code .c{color:#5b6b88}.k{} pre .kw{color:#6E8BFF}.st{color:#3DDC97}.fn{color:#F5A623}.ty{color:#8Fb8ff}
+  footer{margin-top:60px;color:var(--muted);font-size:.85rem;text-align:center;border-top:1px solid var(--border);padding-top:24px}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="eyebrow">React Native · Expo · TypeScript</div>
+  <h1>Aurora</h1>
+  <p class="sub">A real-time crypto portfolio tracker built to demonstrate production React Native end to end — typed data flow, GPU-rendered charts, UI-thread animation, and offline-first persistence. One codebase, iOS · Android · Web.</p>
+  <p class="by">Built by <b>Tobias Bosco Brown</b> · Full-Stack / React Native Developer · buildmytribe.io/portfolio</p>
+
+  <div class="stack">
+    <span class="chip k">Expo Router</span><span class="chip k">Reanimated 3</span><span class="chip k">Skia</span>
+    <span class="chip k">TanStack Query</span><span class="chip k">Zustand + MMKV</span><span class="chip">TypeScript (strict)</span>
+    <span class="chip">Gesture Handler</span><span class="chip">Haptics</span><span class="chip">Jest + RNTL</span><span class="chip">GitHub Actions CI</span>
+  </div>
+
+  <div class="phones">
+    <!-- Portfolio screen -->
+    <div class="phone"><div class="notch"></div><div class="screen">
+      <div class="muted" style="font-size:.78rem">Total balance</div>
+      <div class="bal">$72,184.50</div>
+      <div class="mint" style="font-size:.9rem">+3.42% today</div>
+      <div class="card">
+        <div class="row"><div><div class="sym">BTC</div><div class="name">Bitcoin</div></div>
+          <svg width="64" height="30" viewBox="0 0 64 30"><polyline fill="none" stroke="#3DDC97" stroke-width="2" points="0,22 10,18 20,20 30,12 40,14 52,6 64,8"/></svg>
+          <div class="price">$61,240<br><span class="mint" style="font-size:.78rem">+2.1%</span></div></div>
+        <div class="row"><div><div class="sym">ETH</div><div class="name">Ethereum</div></div>
+          <svg width="64" height="30" viewBox="0 0 64 30"><polyline fill="none" stroke="#3DDC97" stroke-width="2" points="0,16 12,18 24,12 36,15 48,9 64,7"/></svg>
+          <div class="price">$3,012<br><span class="mint" style="font-size:.78rem">+4.6%</span></div></div>
+        <div class="row"><div><div class="sym">SOL</div><div class="name">Solana</div></div>
+          <svg width="64" height="30" viewBox="0 0 64 30"><polyline fill="none" stroke="#FF6B6B" stroke-width="2" points="0,8 12,12 24,10 36,16 48,15 64,20"/></svg>
+          <div class="price">$142.7<br><span class="coral" style="font-size:.78rem">-1.3%</span></div></div>
+      </div>
+      <div class="tabbar"><span class="brand">● Portfolio</span><span class="muted">Markets</span></div>
+    </div><div class="label">Portfolio · animated balance</div></div>
+
+    <!-- Detail screen -->
+    <div class="phone"><div class="notch"></div><div class="screen">
+      <div class="brand" style="font-size:.85rem;margin-bottom:10px">‹ Back</div>
+      <div class="muted" style="font-size:.8rem">BTC</div>
+      <div class="bal" style="font-size:1.9rem">$61,240.00</div>
+      <div class="mint" style="font-size:.9rem">+2.10% · 24h</div>
+      <div class="card" style="padding:14px 12px">
+        <svg width="100%" height="150" viewBox="0 0 230 150" preserveAspectRatio="none">
+          <defs><linearGradient id="g" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#3DDC97" stop-opacity=".4"/><stop offset="1" stop-color="#3DDC97" stop-opacity="0"/></linearGradient></defs>
+          <path class="area" fill="url(#g)" d="M0,110 C30,90 50,120 80,70 C110,30 140,80 170,40 C195,12 215,40 230,30 L230,150 L0,150 Z"/>
+          <path fill="none" stroke="#3DDC97" stroke-width="2.5" d="M0,110 C30,90 50,120 80,70 C110,30 140,80 170,40 C195,12 215,40 230,30"/>
+        </svg>
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-top:14px">
+          <div><div class="muted" style="font-size:.7rem">Market cap</div><div style="font-size:.92rem">$1.21T</div></div>
+          <span class="pill on">Watching</span>
+        </div>
+      </div>
+    </div><div class="label">Asset detail · Skia chart + watch toggle</div></div>
+
+    <!-- Markets screen (light) -->
+    <div class="phone"><div class="notch"></div><div class="screen" style="background:#F5F7FB;color:#0B0E14">
+      <div style="font-size:1.3rem;font-weight:700;margin-bottom:6px">Markets</div>
+      <div style="border-radius:14px;overflow:hidden">
+        <div class="row" style="border-color:#E2E7F1"><div><div class="sym">BTC</div><div class="name" style="color:#5B6477">Bitcoin</div></div><div class="price" style="color:#0B0E14">$61,240<br><span style="color:#1FB07A;font-size:.78rem">+2.1%</span></div></div>
+        <div class="row" style="border-color:#E2E7F1"><div><div class="sym">ETH</div><div class="name" style="color:#5B6477">Ethereum</div></div><div class="price" style="color:#0B0E14">$3,012<br><span style="color:#1FB07A;font-size:.78rem">+4.6%</span></div></div>
+        <div class="row" style="border-color:#E2E7F1"><div><div class="sym">ADA</div><div class="name" style="color:#5B6477">Cardano</div></div><div class="price" style="color:#0B0E14">$0.58<br><span style="color:#E04848;font-size:.78rem">-0.9%</span></div></div>
+        <div class="row" style="border-color:#E2E7F1"><div><div class="sym">LINK</div><div class="name" style="color:#5B6477">Chainlink</div></div><div class="price" style="color:#0B0E14">$17.84<br><span style="color:#1FB07A;font-size:.78rem">+5.2%</span></div></div>
+      </div>
+      <div class="tabbar" style="background:#fff;border-color:#E2E7F1"><span class="muted">Portfolio</span><span style="color:#4F66E0">● Markets</span></div>
+    </div><div class="label">Markets · automatic light/dark theming</div></div>
+  </div>
+
+  <h2>Engineering highlights</h2>
+  <div class="feat">
+    <div class="f"><h3 class="brand">UI-thread animation</h3><p>The balance counter tweens by driving a whitelisted <code>TextInput.text</code> prop from a Reanimated worklet — no JS-thread re-render per frame, so scrolling stays at 120Hz.</p></div>
+    <div class="f"><h3 class="brand">GPU charts (Skia)</h3><p>Sparklines are cubic Skia paths with a gradient area fill, memoised against their inputs so a 30s market refetch never recomputes list geometry.</p></div>
+    <div class="f"><h3 class="brand">Server vs client state</h3><p>TanStack Query owns network data (cache, retry, refetch, cancellation); Zustand owns only user data (holdings/watchlist) persisted via MMKV.</p></div>
+    <div class="f"><h3 class="brand">Pure, tested logic</h3><p>Money math lives in pure selectors (<code>selectPortfolioValue</code>) unit-tested with Jest; CI runs typecheck → lint → test on every PR.</p></div>
+    <div class="f"><h3 class="brand">Offline-first</h3><p>A deterministic fixture backs the API layer, so every screen stays interactive with no network or API key — resilient on flaky mobile connections.</p></div>
+    <div class="f"><h3 class="brand">Type-safety, maxed</h3><p><code>strict</code>, <code>noUncheckedIndexedAccess</code>, <code>exactOptionalPropertyTypes</code>, typed Expo Router routes and a typed <code>useTheme()</code>.</p></div>
+  </div>
+
+  <h2>A representative slice</h2>
+  <div class="codewrap">
+    <div class="codehead">src/components/AnimatedNumber.tsx — tween a currency value on the UI thread</div>
+    <pre><code><span class="kw">export function</span> <span class="fn">AnimatedNumber</span>({ value, style }: { value: <span class="ty">number</span>; style?: <span class="ty">TextStyle</span> }) {
+  <span class="kw">const</span> v = <span class="fn">useSharedValue</span>(value);
+  <span class="fn">useEffect</span>(() => {
+    v.value = <span class="fn">withTiming</span>(value, { duration: <span class="st">650</span>, easing: Easing.<span class="fn">out</span>(Easing.cubic) });
+  }, [value, v]);
+
+  <span class="c">// runs as a worklet — formats &amp; writes to the native text prop every frame, no JS re-render</span>
+  <span class="kw">const</span> props = <span class="fn">useAnimatedProps</span>(() => ({ text: <span class="fn">formatUsd</span>(v.value), defaultValue: <span class="fn">formatUsd</span>(v.value) }));
+  <span class="kw">return</span> &lt;<span class="ty">AnimatedTextInput</span> editable={<span class="kw">false</span>} animatedProps={props} style={style} /&gt;;
+}</code></pre>
+  </div>
+
+  <footer>
+    Aurora — portfolio work sample · React Native + Expo + TypeScript · <b style="color:#fff">Tobias Bosco Brown</b><br>
+    Full source (Expo Router app, Skia charts, Zustand store, Jest tests, CI) included alongside this page.
+  </footer>
+</div>
+</body>
+</html>
